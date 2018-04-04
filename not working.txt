@@ -1,0 +1,53 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package seasonclassification;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author admin
+ */
+public class SeasonClassification {
+Scanner myScanner = new Scanner(System.in);
+int month = myScanner.nextInt();
+int day = myScanner.nextInt();
+static int[] numberOfDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    public static boolean isValidDate(int month, int day) {
+        if ((0 < month) && (month < 13)) {
+            int monthDays = numberOfDays[month - 1];
+            if ((day > 0) && (day < monthDays + 1)) {
+                return true;
+            }
+        }
+        return false;
+
+    public static String findSeason(int month, int day) {
+isValidDate(month, day);
+        int monthDays = numberOfDays[month - 1];
+        int forEquation = monthDays + 1;
+        if ((isValidDate(month, day))) {
+            if ((month < 3) && (day < forEquation || 
+                    (month == 3) && (day < 21) || (month == 12) && (day > 20))) {
+                System.out.println( "winter");
+            }
+            if ((month < 6) && (month > 3) && (day<forEquation) && (day>0) || 
+                    (month == 3) && (day<21) && (day<forEquation) || 
+                    (month == 6) && (day > 20)) {
+            System.out.println( "spring");
+            }
+            if ((month < 9) && (month > 6) && (day < forEquation) && (day>0) || 
+                    (month == 6) && (day < 21) && (day < forEquation) || 
+                    (month == 9) && (day > 20)) {
+            System.out.println( "summer");
+             }
+            if ((month < 12) && (month > 9) && (day < forEquation) && (day>0) || 
+                    (month == 9) && (day < 21) && (day < forEquation) || 
+                    (month == 12) && (day > 20)) {
+            System.out.println( "autumn");
+             }
+            else System.out.println("invalid date");
+        }
